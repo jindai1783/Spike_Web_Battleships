@@ -1,0 +1,13 @@
+<html>
+  <center>
+    <h1>Welcome to New Game</h1>
+    <p>You will play again me - Deep Blue</p>
+    <p>Please enter your name:</p>
+    <form action="/new_game" method="post">
+      <input type="text" name="user_name">
+    </form>
+    <% if @error_no_name %>
+      <%= @error_no_name %>
+    <%end%>
+  </center>
+</html>
