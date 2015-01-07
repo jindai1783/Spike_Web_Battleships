@@ -1,6 +1,19 @@
 <html>
   <center>
     <h1>Set Your Fleet</h1>
-    <p>Let's place your fleet, <%= @user_name %>!</p>
+    <p>Let's place your fleet, <%= GAME.player2.name %>!</p>
+    <p><img src='/images/board.jpg' width="300" height="  300"></p>
+    <p><form action="/set_fleet" method="post">
+      Please enter the following:<br>
+      <input type="text" name="ship" placeholder="Ship"><br>
+      <input type="text" name="coord" placeholder="Coordinates"><br>
+      <input type="text" name="orientation" placeholder="Orientation"><br>
+      <input type="submit" value="Set!">
+    </form></p>
+    <p>NB: you still have the following ships to be placed:</p>
+
+    <% if @error_incomplete %>
+      <%= @error_incomplete %>
+    <%end%>
   </center>
 </html>
