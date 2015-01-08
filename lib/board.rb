@@ -31,6 +31,10 @@ class Board
 		ships.count
 	end
 
+	def is_ship?(coord)
+		grid[coord].content.respond_to?(:sunk?)
+	end
+
 private
 
  	def next_coord(coord, orientation)

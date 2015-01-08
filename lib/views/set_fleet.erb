@@ -1,19 +1,44 @@
 <html>
   <center>
     <h1>Set Your Fleet</h1>
-    <p>Let's place your fleet, <%= GAME.player2.name %>!</p>
-    <p><img src='/images/board.jpg' width="300" height="  300"></p>
-    <p><form action="/set_fleet" method="post">
-      Please enter the following:<br>
-      <input type="text" name="ship" placeholder="Ship"><br>
-      <input type="text" name="coord" placeholder="Coordinates"><br>
-      <input type="text" name="orientation" placeholder="Orientation"><br>
-      <input type="submit" value="Set!">
-    </form></p>
-    <p>NB: you still have the following ships to be placed:</p>
+    <% if GAME.player1.board.grid == nil %>
+      <p>Let's place your fleet, <%= GAME.player1.name %>!</p>
+    <% else %>
+      <p>Another one please, <%= GAME.player1.name %>!</p>
+    <% end %>
+    
+    <table>
+      <% GAME.player1.board.grid.keys.each_slice(10) do |slice| %>
+        <tr><% slice.each do |key|%><td>
+          <% if GAME.player1.board.is_ship?(key.to_sym) %>
+            <img src='/images/ship.jpg'>
+          <% else %>
+            <img src='/images/water.jpg'>
+          <%end%>
+          </form>
+        </td>
+        <%end%>
+        </tr>
+      <%end%>
+    </table>
 
+    <p><form action="/set_fleet" method="post" id="select_ship">
+      <p>Please complete the following:</p>
+      <select name='ship' form="select_ship">
+        <option value="A">Aircraft Carrier</option>
+        <option value="B">Battleship</option>
+        <option value="D">Destroyer</option>
+        <option value="S">Submarine</option>
+        <option value="P">Patrol Boat</option>
+      </select><br>
+      <input type="text" name="coord" placeholder="Coordinates (e.g. A3)"><br>
+      <input type="text" name="orientation" placeholder="Orientation (h/v)"><br>
+      <input type="submit" value="Set!">
+    </form>
     <% if @error_incomplete %>
-      <%= @error_incomplete %>
+      <i><%= @error_incomplete %></i>
     <%end%>
+    </p>
+    <a href="/board">View computer's board</a>
   </center>
 </html>

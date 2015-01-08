@@ -1,0 +1,21 @@
+<html>
+  <center>
+    <h1>Computer's Board</h1>
+    <table>
+      <% GAME.player2.board.grid.keys.each_slice(10) do |slice| %>
+        <tr><% slice.each do |key|%><td>
+          <% if GAME.player2.board.is_ship?(key.to_sym) %>
+            <img src='/images/ship.jpg'>
+          <% else %>
+            <img src='/images/water.jpg'>
+          <%end%>
+          </form>
+        </td>
+        <%end%>
+        </tr>
+      <%end%>
+    </table>
+    <p>How stupid is that? You'll definitely win.</p>
+    <p><a href="/redirect_to_set_fleet">Go back</a></p>
+  <center>
+</html>

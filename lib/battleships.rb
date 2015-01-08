@@ -12,6 +12,8 @@ class Battleship < Sinatra::Base
     @player2 = Player.new
     @player2.name = "Computer"
     GAME.add_player(@player2)
+    @board2 = Board.new(Cell)
+    GAME.player2.board = @board2
     erb :home
   end
 
@@ -28,27 +30,63 @@ class Battleship < Sinatra::Base
       @player1.name = params["user_name"]
       @board1 = Board.new(Cell)
       GAME.add_player(@player1)
-      fleet1 =[
-        Ship.aircraft_carrier, 
-        Ship.battleship, 
-        Ship.destroyer, 
-        Ship.submarine, 
-        Ship.patrol_boat
-      ]
       GAME.player1.board = @board1
       erb :set_fleet
     end
   end
 
   post '/set_fleet' do
-    if params["ship"].empty? || params["coord"].empty? || params["orientation"].empty?
+    if params["coord"].empty? || params["orientation"].empty?
       @error_incomplete = "Please fill in all attributes..."
       erb :set_fleet
     else
-      session["coord"] = params["coordinates"]
-      @coordinates = session["coord"]
-      erb :game_over
+
+      case params["ship"]
+      when "A"
+        type = Ship.aircraft_carrier
+      when "B"
+        type = Ship.battleship
+      when "D"
+        type = Ship.destroyer
+      when "S"
+        type = Ship.submarine
+      else
+        type = Ship.patrol_boat
+      end
+
+      coord = params["coord"].to_sym
+
+      case params["orientation"]
+      when "h"
+        orien = :horizontally
+      else
+        orien = :vertically
+      end
+
+      GAME.player1.board.place(type, coord, orien)
+
+      erb :set_fleet
     end
+  end
+
+  get '/board' do
+    fleet2 = [
+      Ship.aircraft_carrier, 
+      Ship.battleship, 
+      Ship.destroyer, 
+      Ship.submarine, 
+      Ship.patrol_boat]
+
+    fleet2.each_with_index do |ship, index| 
+      coord = ("A" + (index + 1).to_s).to_sym
+      GAME.player2.board.place(ship, coord, :vertically)
+    end
+
+    erb :board
+  end
+
+  get '/redirect_to_set_fleet' do
+    erb :set_fleet
   end
 
   # start the server if ruby file executed directly
