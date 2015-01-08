@@ -1,6 +1,11 @@
 <html>
   <center>
     <h1>Computer's Board</h1>
+
+    <p>Look how he placed his ships!</p>
+
+    <font size="2" color="grey"> A1 &#183 A2 &#183 A3 &#183 A4 &#183 A5 &#183 A6 &#183 A7 &#183 A8 &#183 A9 &#183 A10 </font>
+
     <table>
       <% GAME.player2.board.grid.keys.each_slice(10) do |slice| %>
         <tr><% slice.each do |key|%><td>
@@ -15,7 +20,7 @@
         </tr>
       <%end%>
     </table>
-    <p>How stupid is that? You'll definitely win.</p>
+    <p>How stupid is that? You'll definitely win...</p>
     <p><a href="/redirect_to_set_fleet">Go back</a></p>
   <center>
 </html>

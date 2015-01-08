@@ -96,7 +96,14 @@ class Battleship < Sinatra::Base
   end
 
   post '/fight' do
-    erb :fight
+    if params["coord"].empty?
+      @error_incomplete = "Please fill in the coordinate..."
+      erb :set_fleet
+    else
+      coord = params["coord"].to_sym
+      GAME.shoots(coord)
+      erb :fight
+    end
   end
 
   get '/game_over' do

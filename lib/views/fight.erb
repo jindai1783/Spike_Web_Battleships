@@ -1,14 +1,26 @@
 <html>
   <center>
     <h1>Hit, with hate...</h1>
+
+    <p>Don't hesitate, time is running!</p>
+
+    <font size="2" color="grey"> A1 &#183 A2 &#183 A3 &#183 A4 &#183 A5 &#183 A6 &#183 A7 &#183 A8 &#183 A9 &#183 A10 </font>
     
     <table>
       <% GAME.player2.board.grid.keys.each_slice(10) do |slice| %>
         <tr><% slice.each do |key|%><td>
           <% if GAME.player2.board.is_ship?(key.to_sym) %>
-            <img src='/images/ship.jpg'>
+            <% if GAME.player2.board.is_hit?(key.to_sym) %>
+              <img src='/images/hit.jpg'>
+            <% else %>
+              <img src='/images/ship.jpg'>
+            <% end %>
           <% else %>
-            <img src='/images/water.jpg'>
+            <% if GAME.player2.board.is_hit?(key.to_sym) %>
+              <img src='/images/miss.jpg'>
+            <% else %>
+              <img src='/images/water.jpg'>
+            <%end%>
           <%end%>
           </form>
         </td>
@@ -16,6 +28,17 @@
         </tr>
       <%end%>
     </table>
+
+    <p><form action="/fight" method="post">
+      Please enter a coordinate:<br>
+      <input type="text" name="coord" placeholder="Coordinates (e.g. A3)">
+      <input type="submit" value="Hit!">
+    </form>
+    <% if @error_incomplete %>
+      <i><%= @error_incomplete %></i>
+    <%end%>
+    </p>
+
     <p><a href="/game_over">Quit Game</a></p>
   </center>
 </html>

@@ -35,6 +35,10 @@ class Board
 		grid[coord].content.respond_to?(:sunk?)
 	end
 
+	def is_hit?(coord)
+		grid[coord].hit?
+	end
+
 private
 
  	def next_coord(coord, orientation)
