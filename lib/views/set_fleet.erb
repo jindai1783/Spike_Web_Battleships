@@ -1,11 +1,13 @@
 <html>
   <center>
     <h1>Set Your Fleet</h1>
-    <% if GAME.player1.board.grid == nil %>
+    <% if !GAME.player1.board.floating_ships? %>
       <p>Let's place your fleet, <%= GAME.player1.name %>!</p>
     <% else %>
       <p>Another one please, <%= GAME.player1.name %>!</p>
     <% end %>
+
+    <font size="2" color="grey"> A1 &#183 A2 &#183 A3 &#183 A4 &#183 A5 &#183 A6 &#183 A7 &#183 A8 &#183 A9 &#183 A10 </font>
     
     <table>
       <% GAME.player1.board.grid.keys.each_slice(10) do |slice| %>
@@ -39,7 +41,8 @@
       <i><%= @error_incomplete %></i>
     <%end%>
     </p>
-    <a href="/board">View computer's board</a>
-    <a href="/fight">Done setting, let's fight!</a>
+    <a href="/board_two">View computer's board</a>
+    <i>     &#183     </i>
+    <a href="/fight">Done setting - let's fight!</a>
   </center>
 </html>

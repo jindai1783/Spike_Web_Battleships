@@ -9,11 +9,6 @@ class Battleship < Sinatra::Base
 
   get '/' do
     session['game'] = GAME
-    @player2 = Player.new
-    @player2.name = "Computer"
-    GAME.add_player(@player2)
-    @board2 = Board.new(Cell)
-    GAME.player2.board = @board2
     erb :home
   end
 
@@ -26,11 +21,11 @@ class Battleship < Sinatra::Base
       @error_no_name = "You didn't enter your name."
       erb :new_game
     else
-      @player1 = Player.new
-      @player1.name = params["user_name"]
-      @board1 = Board.new(Cell)
-      GAME.add_player(@player1)
-      GAME.player1.board = @board1
+      player1 = Player.new
+      player1.name = params["user_name"]
+      board1 = Board.new(Cell)
+      GAME.add_player(player1)
+      GAME.player1.board = board1
       erb :set_fleet
     end
   end
@@ -70,6 +65,13 @@ class Battleship < Sinatra::Base
   end
 
   get '/board_two' do
+
+    player2 = Player.new
+    player2.name = "Computer"
+    GAME.add_player(player2)
+    board2 = Board.new(Cell)
+    GAME.player2.board = board2
+
     fleet2 = [
       Ship.aircraft_carrier, 
       Ship.battleship, 
@@ -95,6 +97,10 @@ class Battleship < Sinatra::Base
 
   post '/fight' do
     erb :fight
+  end
+
+  get '/game_over' do
+    erb :game_over
   end
 
   # start the server if ruby file executed directly
