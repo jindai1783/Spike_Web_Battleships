@@ -69,7 +69,7 @@ class Battleship < Sinatra::Base
     end
   end
 
-  get '/board' do
+  get '/board_two' do
     fleet2 = [
       Ship.aircraft_carrier, 
       Ship.battleship, 
@@ -82,11 +82,19 @@ class Battleship < Sinatra::Base
       GAME.player2.board.place(ship, coord, :vertically)
     end
 
-    erb :board
+    erb :board_two
   end
 
   get '/redirect_to_set_fleet' do
     erb :set_fleet
+  end
+
+  get '/fight' do
+    erb :fight
+  end
+
+  post '/fight' do
+    erb :fight
   end
 
   # start the server if ruby file executed directly

@@ -1,0 +1,23 @@
+<html>
+  <center>
+    <h1>Hit, with hate...</h1>
+    
+    <table>
+      <% GAME.player2.board.grid.keys.each_slice(10) do |slice| %>
+        <tr><% slice.each do |key|%><td>
+          <form action="/fight" method="post">
+          <% if GAME.player1.board.is_ship?(key.to_sym) %>
+            <img src='/images/ship.jpg'>
+          <% else %>
+            <img src='/images/water.jpg'>
+          <%end%>
+          </form>
+        </td>
+        <%end%>
+        </tr>
+      <%end%>
+    </table>
+
+    <p><a href="/board">View computer's board</a></p>
+  </center>
+</html>
