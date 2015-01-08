@@ -58,7 +58,11 @@ class Battleship < Sinatra::Base
         orien = :vertically
       end
 
-      GAME.player1.board.place(type, coord, orien)
+      begin
+        GAME.player1.board.place(type, coord, orien)
+      rescue
+        
+      end
 
       erb :set_fleet
     end

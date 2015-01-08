@@ -34,7 +34,8 @@
         <option value="P">Patrol Boat</option>
       </select><br>
       <input type="text" name="coord" placeholder="Coordinates (e.g. A3)"><br>
-      <input type="text" name="orientation" placeholder="Orientation (h/v)"><br>
+      <input type="radio" name="orientation" value="h" checked>Horizontally
+      <input type="radio" name="orientation" value="v">Vertically<br>
       <input type="submit" value="Set!">
     </form>
     <% if @error_incomplete %>
