@@ -15,9 +15,9 @@ Then click the link: [http://localhost:9292]
 
 * Play Battleship on the web
 * Practicing the following technology:
-  *Sinatra
-  *Cucumber
-  *Capybara
-  *HTML5
-  *Ruby
+  * Sinatra
+  * Cucumber
+  * Capybara
+  * HTML5
+  * Ruby
 * Have some fun!
