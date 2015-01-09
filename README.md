@@ -4,7 +4,7 @@
 
 Run [Battleships]
 
-[Battleships]: https://floating-temple-9263.herokuapp.com
+[Battleships]: https://bottleships.herokuapp.com
 
 [http://localhost:9292]: http://localhost:9292
 
