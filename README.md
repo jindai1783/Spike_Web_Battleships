@@ -2,12 +2,9 @@
 
 ##Try it
 
-To run, first follow the terminal commands:
-```
-bundle install
-rackup
-```
-Then click the link: [http://localhost:9292]
+Run [Battleships]
+
+[Battleships]: https://floating-temple-9263.herokuapp.com
 
 [http://localhost:9292]: http://localhost:9292
 
