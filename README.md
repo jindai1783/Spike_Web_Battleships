@@ -6,7 +6,7 @@ This repository is my attempt to spike through developing a web based Battleship
 
 [Battleships Web]: https://github.com/jindai1783/Battleships_Web
 
-[alt text][screen]
+![alt text][screen]
 
 [screen]: https://github.com/jindai1783/Spike_Web_Battleships/tree/master/lib/public/images/screen.png
 
