@@ -6,17 +6,17 @@ This repository is my attempt to spike through developing a web based Battleship
 
 [Battleships Web]: https://github.com/jindai1783/Battleships_Web
 
-![alt text][screen]
+![alt text][ship]
+![alt text][game]
 
-[screen]: https://github.com/jindai1783/Spike_Web_Battleships/tree/master/lib/public/images/screen.png
+[ship]: https://github.com/jindai1783/Spike_Web_Battleships/blob/master/lib/public/images/battleship.png
+[game]:   https://github.com/jindai1783/Spike_Web_Battleships/blob/master/lib/public/images/screen.png
 
 ## Try it
 
-Run [Battleships]
+Run [Battleships], enjoy!
 
 [Battleships]: https://bottleships.herokuapp.com
-
-[http://localhost:9292]: http://localhost:9292
 
 ## Objectives
 
